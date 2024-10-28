@@ -1,10 +1,14 @@
 "use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 const user_class_1 = require("./user.class");
 const product_class_1 = require("./product.class");
 const vendor_class_1 = require("./vendor.class");
 const request_class_1 = require("./request.class");
-const prompt = require("prompt-sync")();
+const prompt_sync_1 = __importDefault(require("prompt-sync"));
+const prompt = (0, prompt_sync_1.default)();
 let u1 = new user_class_1.User(1, "ronparks", "password1", "Ron", "Swanson", "740-000-9900", "email", false, false);
 let u2 = new user_class_1.User(2, "ritapars", "password2", "Chris", "Barry", "740-888-9990", "email", false, false);
 let u3 = new user_class_1.User(2, "parksplace", "password3", "Seth", "MacFarlane", "740-999-9911", "email", true, false);
@@ -23,9 +27,27 @@ let p3 = new product_class_1.Product(3, v3, "P003", "Monitor", 150.75, "each", "
 let p4 = new product_class_1.Product(4, v2, "P004", "USB Hub", 15.99, "each", "/images/usb-hub.jpg");
 let p5 = new product_class_1.Product(5, v1, "P005", "Laptop Stand", 32.5, "each", "/images/laptop-stand.jpg");
 let productList = [p1, p2, p3, p4, p5];
-let r1 = new request_class_1.Request(1, u1, "REQ-001", "Purchase of office supplies", "Supplies needed for Q4 operations", new Date("2024-11-15"), "Ground", "Approved", 250.75, new Date("2024-10-25"));
+let r1 = new request_class_1.Request(1, u1, "REQ-001", "Purchase of office supplies", "Supplies needed for Q4 operations", new Date("2024-11-15"), "Ground", "New", 250.75, new Date("2024-10-25"));
 let r2 = new request_class_1.Request(2, u2, "REQ-002", "Upgrade computer systems", "Old systems causing performance issues", new Date("2024-12-01"), "Air", "Pending", 1500.0, new Date("2024-10-26"), "Awaiting approval from management");
 let r3 = new request_class_1.Request(3, u3, "REQ-003", "Purchase of new chairs", "To replace broken chairs in meeting rooms", new Date("2024-11-20"), "Ground", "Rejected", 300.0, new Date("2024-10-27"), "Insufficient budget for Q4");
 let r4 = new request_class_1.Request(4, u4, "REQ-004", "Renew software licenses", "Annual renewal for productivity software", new Date("2024-11-30"), "Email", "Approved", 1200.0, new Date("2024-10-27"));
 let r5 = new request_class_1.Request(5, u5, "REQ-005", "Order promotional materials", "Materials needed for upcoming trade show", new Date("2024-11-18"), "Courier", "Pending", 750.0, new Date("2024-10-28"));
 let requests = [r1, r2, r3, r4, r5];
+//get user input
+console.log("\nGet values for a User: ");
+console.log("================================");
+let id = parseInt(prompt("ID: "));
+console.log("ID: ", id);
+let username = prompt("Username: ");
+let password = prompt("Password: ");
+let firstName = prompt("First Name: ");
+let lastName = prompt("Last Name: ");
+let phoneNumber = prompt("Phone Number: ");
+let email = prompt("Email: ");
+let u6 = new user_class_1.User(id, username, password, firstName, lastName, phoneNumber, email);
+userList.push(u6);
+console.log("\nUsers: ");
+console.log("=============");
+userList.forEach((user) => {
+    console.log(user);
+});

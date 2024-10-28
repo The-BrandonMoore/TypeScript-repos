@@ -3,7 +3,7 @@ import { Product } from "./product.class";
 import { Vendor } from "./vendor.class";
 import { Request } from "./request.class";
 import promptSync from "prompt-sync";
-const prompt = require("prompt-sync")();
+const prompt = promptSync();
 
 let u1 = new User(
   1,
@@ -176,7 +176,7 @@ let r1 = new Request(
   "Supplies needed for Q4 operations",
   new Date("2024-11-15"),
   "Ground",
-  "Approved",
+  "New",
   250.75,
   new Date("2024-10-25")
 );
@@ -236,3 +236,34 @@ let r5 = new Request(
 );
 
 let requests = [r1, r2, r3, r4, r5];
+
+//get user input
+console.log("\nGet values for a User: ");
+console.log("================================");
+
+let id: number = parseInt(prompt("ID: "));
+console.log("ID: ", id);
+let username: string = prompt("Username: ");
+let password: string = prompt("Password: ");
+let firstName: string = prompt("First Name: ");
+let lastName: string = prompt("Last Name: ");
+let phoneNumber: string = prompt("Phone Number: ");
+let email: string = prompt("Email: ");
+
+let u6: User = new User(
+  id,
+  username,
+  password,
+  firstName,
+  lastName,
+  phoneNumber,
+  email
+);
+userList.push(u6);
+
+console.log("\nUsers: ");
+console.log("=============");
+
+userList.forEach((user) => {
+  console.log(user);
+});
